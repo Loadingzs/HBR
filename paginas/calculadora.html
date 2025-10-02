@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculadora</title>
+    </head>
+    <body>
+        <form name="calculadora" method="post" action="/calcular">
+            <table border="1">
+                <tr>
+                    <td>
+                        <label>Digite o primeiro valor:</label>
+                        <input type="text" name="valor1">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Digite o operador:</label>
+                        <input type="text" name="operador">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Digite o segundo valor:</label>
+                        <input type="text" name="valor2">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Calcular" style="width: 100%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Resultado:</label>
+                        <input type="text" name="resultado" value={{resultado}}>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
+
+
+main.py
+from fastapi import FastAPI, Form
+from fastapi.requests import Request
+from fastapi.templating import Jinja2Templates
+
+app_web = FastAPI()
+paginas = Jinja2Templates(directory='HBR/paginas')
+
+@app_web.get('/')
+async def index(request: Request):
+    context = {
+        "request": request,
+        "resultado":0
+    }
+    return paginas.TemplateResponse('calculadora.html', context=context)
+
+@app_web.post('/calcular')
+async def login(request: Request):
+   
+   form = await request.form()
+   valor1 = float(form.get('valor1'))
+   operador = form.get('operador')
+   valor2 = float(form.get('valor2'))
+   resultado = 0.0
+
+   if(operador=="+"):
+       resultado = valor1 + valor2
+
+   if(operador=="-"):
+       resultado = valor1 - valor2
+
+   if(operador=="*"):
+       resultado = valor1 * valor2
+
+   if(operador=="/"):
+       resultado = valor1 / valor2     
+
+   contexto = {
+        "request": request,
+        "resultado": resultado
+    }
+   return paginas.TemplateResponse("calculadora.html", contexto)
