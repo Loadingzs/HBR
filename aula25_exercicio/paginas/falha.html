@@ -1,11 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Login Falhou</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Negado</title>
+    <style>
+        /* Estilos CSS Minimalistas e Elegantes */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6; /* Fundo neutro e leve */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .error-container {
+            background-color: #ffffff; /* Fundo branco para o cartão */
+            padding: 50px 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra suave */
+            max-width: 450px;
+            width: 90%;
+            /* Borda vermelha para indicar erro */
+            border-left: 5px solid #dc3545; 
+        }
+
+        h2 {
+            color: #dc3545; /* Vermelho para erro */
+            margin-bottom: 15px;
+            font-weight: 400;
+            font-size: 1.8em;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.1em;
+            margin-top: 0;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        /* Ícone de erro (usando Unicode 'X') */
+        .icon {
+            font-size: 3em;
+            color: #dc3545;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Estilo elegante para o link "Tentar novamente" */
+        .retry-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c757d; /* Cinza suave para a ação secundária */
+            color: white;
+            text-decoration: none; /* Remove o sublinhado padrão */
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .retry-link:hover {
+            background-color: #5a6268; /* Cinza um pouco mais escuro no hover */
+        }
+    </style>
 </head>
 <body>
-    <h2>Falha no login.</h2>
-    <p>Usuário ou senha inválidos.</p>
-    <a href="/">Tentar novamente</a>
+    <div class="error-container">
+        <span class="icon" aria-hidden="true">&#x2715;</span>
+        
+        <h2>Falha no login.</h2>
+        
+        <p>Usuário ou senha inválidos. Por favor, verifique suas credenciais e tente novamente.</p>
+        
+        <a href="/" class="retry-link">Tentar novamente</a>
+    </div>
 </body>
 </html>

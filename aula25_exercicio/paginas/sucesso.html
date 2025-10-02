@@ -1,10 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Login Sucesso</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Concedido</title>
+    <style>
+        /* Estilos CSS Minimalistas e Elegantes */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6; /* Fundo neutro e leve */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center; /* Centraliza o texto dentro do corpo */
+        }
+
+        .success-container {
+            background-color: #ffffff; /* Fundo branco para o cartão */
+            padding: 50px 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra suave */
+            max-width: 450px;
+            width: 90%;
+            /* Adiciona um efeito sutil de borda verde para sucesso */
+            border-left: 5px solid #28a745; 
+        }
+
+        h2 {
+            color: #28a745; /* Verde de sucesso */
+            margin-bottom: 15px;
+            font-weight: 400; /* Peso da fonte equilibrado */
+            font-size: 1.8em;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2em;
+            margin-top: 0;
+            line-height: 1.6;
+        }
+
+        /* Opcional: Estilo para o nome do usuário (destaque) */
+        .user-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Opcional: Ícone de sucesso (usando Unicode) */
+        .icon {
+            font-size: 3em;
+            color: #28a745;
+            margin-bottom: 20px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h2>Login realizado com sucesso!</h2>
-    <p>Bem-vindo, {{ user }}!</p>
+    <div class="success-container">
+        <span class="icon" aria-hidden="true">&#x2713;</span>
+        
+        <h2>Login realizado com sucesso!</h2>
+        
+        <p>Bem-vindo(a), <span class="user-name">{{ user }}</span>!</p>
+    </div>
 </body>
 </html>

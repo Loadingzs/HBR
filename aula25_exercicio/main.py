@@ -20,7 +20,6 @@ def get_db_connection():
         database="aula25"
     )
 
-
 @app_web.get("/", response_class=HTMLResponse)
 def login_form(request: Request):
     return paginas.TemplateResponse("login.html", {"request": request})
@@ -39,15 +38,11 @@ def login(
     result = cursor.fetchone()
     cursor.close()
     conn.close()
-
     if result and result[0] == hash_password:
         Request.session['user'] = nome
         return RedirectResponse("/sucesso", status_code=HTTP_302_FOUND)
     else:
         return RedirectResponse("/falha", status_code=HTTP_302_FOUND)
-
-
-
 
 @app_web.get("/sucesso", response_class=HTMLResponse)
 def success(request: Request):

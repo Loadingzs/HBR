@@ -1,20 +1,109 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <style>
+        /* CSS styles will go here */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6; /* Light, neutral background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #ffffff; /* White card */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Soft shadow for elegance */
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 300; /* Lighter font weight for a modern look */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left; /* Align labels/inputs to the left within the form */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd; /* Subtle border */
+            border-radius: 8px;
+            box-sizing: border-box; /* Important for padding/width calculation */
+            font-size: 1em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff; /* Primary color on focus */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15); /* Subtle focus ring */
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff; /* Primary button color (Blue) */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(1px); /* Little press effect */
+        }
+    </style>
 </head>
 <body>
-    <h2>Login</h2>
-<form method="post" action="/login">
-    <label>Usuário:</label>
-    <input type="text" name="nome" required><br><br>
+    <div class="login-container">
+        <h2>Acesso à Conta</h2>
+        <form method="post" action="/login">
+            <div class="form-group">
+                <label for="nome">Usuário</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
 
-    <label>Senha:</label>
-    <input type="password" name="senha" required><br><br>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
 
-    <button type="submit">Entrar</button>
-</form>
-
-    </form>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
 </body>
 </html>
+
