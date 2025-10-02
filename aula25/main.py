@@ -13,4 +13,4 @@ async def index(request: Request):
     }
     return paginas.TemplateResponse('calculadora.html', context)
 
-# teste github
+# teste github base
