@@ -5,8 +5,6 @@ import mysql.connector
 import hashlib
 from starlette.responses import Response
 from starlette.status import HTTP_302_FOUND
-
-
 from starlette.middleware.sessions import SessionMiddleware
 
 app_web = FastAPI()
@@ -34,12 +32,8 @@ def login(
     nome: str = Form(...),
     senha: str = Form(...),
 ):
-
-
     conn = get_db_connection()
     cursor = conn.cursor()
-
-
     hash_password = hashlib.md5(senha.encode()).hexdigest()
     cursor.execute("SELECT password FROM tb_administracao WHERE login = %s", (nome,))
     result = cursor.fetchone()
@@ -48,21 +42,20 @@ def login(
 
     if result and result[0] == hash_password:
         Request.session['user'] = nome
-        return RedirectResponse("/success", status_code=HTTP_302_FOUND)
+        return RedirectResponse("/sucesso", status_code=HTTP_302_FOUND)
     else:
-        return RedirectResponse("/fail", status_code=HTTP_302_FOUND)
+        return RedirectResponse("/falha", status_code=HTTP_302_FOUND)
 
 
 
 
-@app_web.get("/success", response_class=HTMLResponse)
+@app_web.get("/sucesso", response_class=HTMLResponse)
 def success(request: Request):
     user = request.session.get("user")
     if not user:
         return RedirectResponse("/", status_code=HTTP_302_FOUND)
-    return paginas.TemplateResponse("sucess.html", {"request": request, "user": user})
+    return paginas.TemplateResponse("sucesso.html", {"request": request, "user": user})
 
-# Tela de login falha
-@app_web.get("/fail", response_class=HTMLResponse)
+@app_web.get("/falha", response_class=HTMLResponse)
 def fail(request: Request):
-    return paginas.TemplateResponse("fail.html", {"request": request})
+    return paginas.TemplateResponse("falha.html", {"request": request})
