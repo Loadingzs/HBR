@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Bem Vindo</title>
+</head>
+<body>
+  <h1>Bem Vindo à Página Inicial</h1>
+
+  {% if usuario %}
+    <p>Olá, <strong>{{ usuario }}</strong>!</p>
+
+    <p>
+      <a href="{{ url_for('register') }}">Cadastrar Pet</a> |
+      <a href="{{ url_for('pets') }}">Listar Pets</a> |
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </p>
+  {% else %}
+    <p>Você não está logado. <a href="{{ url_for('login') }}">Entrar</a></p>
+  {% endif %}
+
+</body>
+</html>
